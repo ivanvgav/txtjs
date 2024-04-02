@@ -1,0 +1,3 @@
+= txtjs
+
+Application to use todo.txt with a twist of a kanban board.

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style src="styles/styles.css"></style>
-    <script src="src/index.js"></script>
     <title>txt.js</title>
 </head>
 <body>
@@ -14,7 +13,7 @@
     <!-- Modal -->
     <div>
         <span></span>
-        <form class="" action="" method="post">
+        <form class="" action="" method="post" id="form">
             <div class="imgcontainer">
                 <span></span>
                 <img src="" alt="Avatar" class="avatar">
@@ -22,10 +21,10 @@
 
             <div class="container">
                 <label for="username">Username</label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
                 <label for="password">Password</label>
-                <input type="text" name="password" required>
+                <input type="text" name="password" id="password"required>
 
                 <button type="submit">Submit</button>
                 <label type="checkbox" checked="checked" name="remember">Remember me!</label>
@@ -37,5 +36,6 @@
             </div>
         </form>
     </div>
+    <script src="src/index.js"></script>
 </body>
 </html>

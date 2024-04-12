@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="src/index.js"></script>
     <title>txt.js</title>
 </head>
 <body>
     <h1>todoTXT.js</h1>
     <div id="center">
-        <button id="login">Log In</button>
+        <button id="login" onclick="appearBtn()">Log In</button>
     </div>
 
     <!-- Modal -->
-    <div>
-        <span></span>
+    <div id="modalContainer" class="hide">
+        <span onclick="closeBtn()" class="close"></span>
         <form class="modal-content animate" action="" method="post">
             <div class="imgcontainer">
                 <span class="close" title="Close modal">x</span>
@@ -36,10 +35,11 @@
             </div>
 
             <div class="container">
-                <button type="button" class="cancelBtn">Cancel</button>
+                <button type="button" class="cancelBtn" onclick="hideBtn()" >Cancel</button>
                 <span class="psw">Forgot <a href="#">password</a>?</span>
             </div>
         </form>
     </div>
+<script src="src/index.js"></script>
 </body>
 </html>

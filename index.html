@@ -15,7 +15,7 @@
     <!-- Modal -->
     <div id="modalContainer" class="hide">
         <span onclick="closeBtn()" class="close"></span>
-        <form class="modal-content animate" action="" method="post">
+        <form class="modal-content animate" action="" method="post" id="form">
             <div class="imgcontainer">
                 <span class="close" title="Close modal">x</span>
                 <img src="" alt="Avatar" class="avatar">
@@ -23,10 +23,10 @@
 
             <div class="container">
                 <label for="username">Username</label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
                 <label for="password">Password</label>
-                <input type="text" placeholder="Enter Password" name="password" required>
+                <input type="text" placeholder="Enter Password" name="password" id="password" required>
 
                 <button type="submit">Submit</button>
                 <label>
@@ -40,6 +40,6 @@
             </div>
         </form>
     </div>
-<script src="src/index.js"></script>
+    <script src="src/index.js"></script>
 </body>
 </html>

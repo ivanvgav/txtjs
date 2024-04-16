@@ -22,8 +22,13 @@ body {
 }
 
 img.avatar {
-    width: 40%;
+    width: 20%;
     border-radius: 50%;
+    display: block;
+    padding: 10%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Set modal class to main div when js is ready */

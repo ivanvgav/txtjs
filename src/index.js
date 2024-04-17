@@ -10,6 +10,10 @@ window.onclick = (event) => {
     }
 }
 
+const close = document.getElementById('closeX');
+
+const closeBtn = () => { modal.style.display = 'none' }
+
 const loginForm = document.getElementById('form')
 
 loginForm.addEventListener("submit", (e) => {

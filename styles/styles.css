@@ -85,7 +85,11 @@ button:hover {
 }
 
 #login {
-    width: auto;
+    width: 200px;
+}
+
+#new-user {
+    width: 200px;
 }
 
 #center {

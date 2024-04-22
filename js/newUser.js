@@ -11,8 +11,8 @@ function matchPassword() {
 
 const form = document.getElementById('form')
 
-try {
-    form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
+    try {
         e.preventDefault();
 
         const email = document.getElementById('email').value;
@@ -20,10 +20,10 @@ try {
         const password = document.getElementById('password').value;
         alert(`User create succesfully. The date is Username: ${username}, Email: ${email} and Password: ${password}`);
 
-        window.location.replace("/");
+        window.history.back();
+        }
+    catch (error) {
+        alert("You made a mistake. Please try again.");
+        console.log(error);
+    }
     })
-}
-catch (error) {
-    alert("Be aware, you made an error, You should try again. Check the console");
-    console.log(error);
-}

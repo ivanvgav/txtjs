@@ -19,11 +19,36 @@ form.addEventListener('submit', (e) => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         alert(`User create succesfully. The date is Username: ${username}, Email: ${email} and Password: ${password}`);
+        
+        let user = {
+            email: email,
+            username: username,
+            password: encryptPassword(password),
+        }
+
+        saveToLocalStorage(user)
 
         window.history.back();
-        }
+    }
     catch (error) {
         alert("You made a mistake. Please try again.");
         console.log(error);
     }
-    })
+})
+
+function encryptPassword(password) {
+    const encryptPass = CryptoJS.SHA1(password).toString()
+    
+    console.log(encryptPass)
+    alert(encryptPass)
+    return encryptPass.toString() 
+}
+
+function saveToLocalStorage(user) {
+    let users = JSON.parse(localStorage.getItem('users'));
+    if (users == null) {
+        users = [];
+    }
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+}

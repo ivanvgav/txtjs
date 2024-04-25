@@ -19,8 +19,14 @@ form.addEventListener('submit', (e) => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         alert(`User create succesfully. The date is Username: ${username}, Email: ${email} and Password: ${password}`);
+        
+        let users = {
+            email: email,
+            username: username,
+            password: encryptPassword(password),
+        }
 
-        saveToLocalStorage()
+        saveToLocalStorage(users)
 
         window.history.back();
     }
@@ -30,33 +36,60 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-function saveToLocalStorage() {
-    let newEmail = document.getElementById('email').value
-    let newUsername = document.getElementById('username').value
-    let newPassword = document.getElementById('password').value
+function encryptPassword(password) {
+    const key = CryptoJS.lib.WordArray.random(16);
 
-    if (localStorage.getItem('email') == null) {
-        localStorage.setItem('email', '[]' )
+    const encryptPass = CryptoJS.AES.encrypt(password, key)
+    console.log(encryptPass)
+    return {
+        key: key.toString(),
+        cipherPass: encryptPass.toString()
     }
+}
 
-    if (localStorage.getItem('username') == null) {
-        localStorage.setItem('username', '[]' )
-    } 
+function decryptPassword(encryptPassword, key){
+    const keyWordArray = CryptoJS.enc.Utf8.parse(key);
+    const bytes = CryptoJS.AES.decrypt(encryptPassword, keyWordArray);
 
-    if (localStorage.getItem('password') == null) {
-        localStorage.setItem('password', '[]' )
+    return bytes.toString(CryptoJS.enc.Utf8)
+}
+
+function saveToLocalStorage(user) {
+
+    //
+    // if (localStorage.getItem('email') == null) {
+    //     localStorage.setItem('email', '[]')
+    // }
+    //
+    // if (localStorage.getItem('username') == null) {
+    //     localStorage.setItem('username', '[]')
+    // }
+    //
+    // if (localStorage.getItem('password') == null) {
+    //     localStorage.setItem('password', '[]')
+    // }
+
+    if (user == null ) {
+        user = {
+            email: [],
+            username: [],
+            password: [],
+        }
+    } else {
+        let users = JSON.parse(localStorage.getItem('users'));
+        users.push(users);
+        localStorage.setItem('users', JSON.stringify(users));
     }
-
-    let oldEmail = JSON.parse(localStorage.getItem('email'))
-    oldEmail.push(newEmail)
-
-    let oldUsername = JSON.parse(localStorage.getItem('username'))
-    oldUsername.push(newUsername)
-
-    let oldPassword = JSON.parse(localStorage.getItem('password'))
-    oldPassword.push(newPassword)
-
-    localStorage.setItem('email', JSON.stringify(oldEmail));
-    localStorage.setItem('username', JSON.stringify(oldUsername));
-    localStorage.setItem('password', JSON.stringify(oldPassword));
+    // let oldEmail = JSON.parse(localStorage.getItem('email'))
+    // oldEmail.push(users.email)
+    //
+    // let oldUsername = JSON.parse(localStorage.getItem('username'))
+    // oldUsername.push(users.username)
+    //
+    // let oldPassword = JSON.parse(localStorage.getItem('password'))
+    // oldPassword.push(users.password)
+    //
+    // localStorage.setItem('email', JSON.stringify(oldEmail));
+    // localStorage.setItem('username', JSON.stringify(oldUsername));
+    // localStorage.setItem('password', JSON.stringify(oldPassword));
 }

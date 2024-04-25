@@ -1,3 +1,5 @@
+import { encryptPassword } from "../js/modules/encryptPassword.js"
+
 const login = document.getElementById('login')
 const modal = document.getElementById('modalContainer')
 
@@ -30,7 +32,21 @@ loginForm.addEventListener("submit", (e) => {
         div.innerText = `The username is ${username.value} and the password is ${password.value}`;
         document.body.appendChild(div);
         
+        checkUserAndPassword(username.value, password.value)
         username.value = "";
         password.value = "";
     }
+
 })
+
+function checkUserAndPassword(username, password) {
+    const savedUsername = JSON.parse(localStorage.getItem('users')); 
+    if (username != savedUsername.username) {
+        alert("This is not a created username. Please create a new account") 
+    }
+
+    const encryptPass = encryptPassword(password)    
+    if (password == savedUsername.password) {
+        console.log("Same password");
+    }
+}

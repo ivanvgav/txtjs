@@ -1,3 +1,5 @@
+import { encryptPassword } from "./modules/encryptPassword.js";
+
 function matchPassword() {
     const password = document.getElementById('password');
     const reconfirmPassword = document.getElementById('reconfirm-password');
@@ -36,13 +38,11 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-function encryptPassword(password) {
-    const encryptPass = CryptoJS.SHA1(password).toString()
+// export function encryptPassword(password) {
+//     const encryptPass = CryptoJS.SHA1(password).toString()
     
-    console.log(encryptPass)
-    alert(encryptPass)
-    return encryptPass.toString() 
-}
+//     return encryptPass.toString() 
+// }
 
 function saveToLocalStorage(user) {
     let users = JSON.parse(localStorage.getItem('users'));

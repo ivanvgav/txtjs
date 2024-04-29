@@ -2,24 +2,16 @@ import { getUsers } from "./saveToLocalStorage.js";
 import { encryptPassword } from './encryptPassword.js'
 
 export function checkUserAndPassword(username, password) {
-    const savedUsers = Array(getUsers()); 
-    let checkUsername = savedUsers.find((user) => {
+    const savedUsers = getUsers(); 
+    let checkUser = savedUsers.find((user) => {
         return username == user.username
     });
-    console.log(checkUsername);
     
-    if (checkUsername == undefined) {
-        alert("This is not a created username. Please create a new account");
-        console.log("This is not a created username. Please create a new account");
-    }
+    const passwordToBeCheck = encryptPassword(password)
 
-    let checkUserPassword = savedUsers.find((user) => {
-        encryptPassword(password)
-        return password == user.password
-    });
-    console.log(checkUserPassword);
-
-    if (checkUserPassword == undefined) {
-        console.log("This is not a created password. Please create a new account");
+    if (checkUser == undefined || checkUser.password != passwordToBeCheck) {
+        alert("Your credencials are incorrect. If you do not have an account, please create a new one");
+    } else {
+        window.location.href = "../pages/txtjs.html";
     }
 }

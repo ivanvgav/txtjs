@@ -5,12 +5,12 @@ export function encryptPassword(password) {
 }
 
 export function matchPassword() {
-    const password = document.getElementById('password');
-    const reconfirmPassword = document.getElementById('reconfirm-password');
+    const passwordInput = document.getElementById('password');
+    const reconfirmPasswordInput = document.getElementById('reconfirm-password');
 
-    if (password.value == reconfirmPassword.value) {
-        reconfirmPassword.setCustomValidity('')
+    if (passwordInput.value == reconfirmPasswordInput.value) {
+        reconfirmPasswordInput.setCustomValidity('')
     } else {
-        reconfirmPassword.setCustomValidity('Password do not match')
+        reconfirmPasswordInput.setCustomValidity('Password do not match')
     }
 }

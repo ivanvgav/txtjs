@@ -7,9 +7,7 @@ export function checkUserAndPassword(username, password) {
         return username == user.username
     });
     
-    const passwordToBeCheck = encryptPassword(password)
-
-    if (checkUser == undefined || checkUser.password != passwordToBeCheck) {
+    if (checkUser || checkUser.password != encryptPassword(password)) {
         alert("Your credencials are incorrect. If you do not have an account, please create a new one");
     } else {
         window.location.href = "../pages/txtjs.html";

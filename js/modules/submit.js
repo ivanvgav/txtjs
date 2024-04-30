@@ -3,7 +3,7 @@ import { saveToLocalStorage } from "./saveToLocalStorage.js";
 
 export const form = document.getElementById('form')
 
-export let submitForm = form.addEventListener('submit', (e) => {
+export const submitFormButton = () => form.addEventListener('submit', (e) => {
     try {
         e.preventDefault();
 
@@ -11,7 +11,7 @@ export let submitForm = form.addEventListener('submit', (e) => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         alert(`User create successfully. The date is Username: ${username}, Email: ${email} and Password: ${password}`);
-        
+
         let user = {
             email: email,
             username: username,

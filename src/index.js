@@ -1,4 +1,5 @@
 import { modal, appearBtn, closeBtn, hideBtn } from "../js/modules/login.js"
+import { loginButton } from "../js/modules/loginForm.js"
 
 window.appearBtn = function() {
     appearBtn()
@@ -8,6 +9,10 @@ window.closeBtn = function() {
 }
 window.hideBtn = function() {
     hideBtn()
+}
+
+window.onload = () => {
+    loginButton()
 }
 
 window.onclick = (event) => {

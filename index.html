@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1>todoTXT.js</h1>
-    <div id="center">
-        <button class="button" id="login" onclick="appearBtn()">Log In</button>
+    <div class="center" id="login">
+        <button class="button" id="login" onclick="appearById()">Log In</button>
     </div>
 
-    <div id="center">
+    <div class="center">
         <a href="pages/newUser.html">
         <button class="button" type="button" id="new-user">Create account</button>
         </a>
@@ -22,7 +22,7 @@
     <div id="modalContainer" class="hide">
         <form class="modal-content animate" action="" method="post" id="form">
             <div class="img-container">
-                <button id="closeX" class="close" onclick="closeBtn()" title="Close modal">x</button>
+                <button id="closeX" class="close" type="button" onclick="hideById()" title="Close modal">x</button>
                     <img src="imgs/avatar-default.svg" alt="Avatar" class="avatar">
             </div>
 
@@ -40,7 +40,7 @@
                 <label>
                     <input type="checkbox" checked="checked" name="remember">Remember me!
                 </label>
-                <button type="button" class="button" onclick="hideBtn()" >Cancel</button>
+                <button type="button" class="button" onclick="hideById()" >Cancel</button>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

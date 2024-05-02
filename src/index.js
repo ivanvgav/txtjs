@@ -1,22 +1,14 @@
-import { modal, appearBtn, closeBtn, hideBtn } from "../js/modules/login.js"
+import { appearById, hideById } from "../js/modules/login.js"
 import { loginButton } from "../js/modules/loginForm.js"
 
-window.appearBtn = function() {
-    appearBtn()
+window.appearById = function() {
+    appearById('modalContainer')
 }
-window.closeBtn = function() {
-    closeBtn()
-}
-window.hideBtn = function() {
-    hideBtn()
+
+window.hideById = function() {
+    hideById('modalContainer')
 }
 
 window.onload = () => {
     loginButton()
-}
-
-window.onclick = (event) => {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
 }

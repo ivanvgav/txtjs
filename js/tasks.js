@@ -1,11 +1,8 @@
-import { appearBtn, closeBtn, hideBtn } from "./modules/login.js" 
+import { appearById, hideById } from "./modules/login.js" 
 
-window.appearBtn = function() {
-    appearBtn()
+window.appearById = function() {
+    appearById('modalContainer')
 }
-window.closeBtn = function() {
-    closeBtn()
-}
-window.hideBtn = function() {
-    hideBtn()
+window.hideById = function() {
+    hideById('modalContainer')
 }

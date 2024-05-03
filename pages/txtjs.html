@@ -14,7 +14,7 @@
                 <p>A place where you can set your tasks following the todo-txt schema and see them in a kanban board.</p>
             </div>
         </header>
-        <button class="button" onclick="appearById()">Add new task</button>
+        <button class="button" onclick="appearById('modalContainer')">Add new task</button>
         <!--Modal new task form-->
         <div id="modalContainer" class="hide">
             <form class="modal-content animate" action="" method="post" id="form">
@@ -24,7 +24,7 @@
                 </div>
 
                     <button class="button" type="submit">Submit</button>
-                    <button type="button" class="button" onclick="hideById()" >Cancel</button>
+                    <button type="button" class="button" onclick="hideById('modalContainer')" >Cancel</button>
             </form>
         </div>
 

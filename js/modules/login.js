@@ -1,9 +1,9 @@
-export const appearById = (element) => {
-    const appearId = document.getElementById(element)
-    appearId.style.display = 'block'
+export const appearById = (id) => {
+    const element = document.getElementById(id)
+    element.style.display = 'block'
 }
 
-export const hideById = (element) => {
-    const hideId = document.getElementById(element)
-    hideId.style.display = 'none'
+export const hideById = (id) => {
+    const element = document.getElementById(id)
+    element.style.display = 'none'
 }

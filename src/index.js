@@ -1,12 +1,12 @@
 import { appearById, hideById } from "../js/modules/login.js"
 import { loginButton } from "../js/modules/loginForm.js"
 
-window.appearById = function() {
-    appearById('modalContainer')
+window.appearById = function(id) {
+    appearById(id)
 }
 
-window.hideById = function() {
-    hideById('modalContainer')
+window.hideById = function(id) {
+    hideById(id)
 }
 
 window.onload = () => {

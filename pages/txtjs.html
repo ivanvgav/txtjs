@@ -4,10 +4,56 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>txt.js</title>
-        <link href="../styles/styles.css" rel="stylesheet">
+        <link href="../styles/stylesTodo.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Acess granted!</h1>
-        <h2>Welcome to txtjs 🔥</h2>
+        <!-- <h1>Access granted!</h1> -->
+        <header>
+            <div class="info-container">
+                <h2>Welcome to todo-txt.js ✍🏻</h2>
+                <p>A place where you can set your tasks following the todo-txt schema and see them in a kanban board.</p>
+            </div>
+        </header>
+        <button class="button" onclick="appearById('modalContainer')">Add new task</button>
+        <!--Modal new task form-->
+        <div id="modalContainer" class="hide">
+            <form class="modal-content animate" action="" method="post" id="form">
+                <div class="container">
+                    <label for="new-task">New Task</label>
+                    <input type="text" placeholder="Enter Task" name="new-task" id="new-task" required>
+                </div>
+
+                    <button class="button" type="submit">Submit</button>
+                    <button type="button" class="button" onclick="hideById('modalContainer')" >Cancel</button>
+            </form>
+        </div>
+
+            <!--Add form to load every tasks-->
+            <section class="column-container">
+                <div class="task-column">
+                    <h3>No due date</h3>
+                    <hr class="custom-hr">
+                    <div></div>
+                </div>
+            
+                <div class="task-column">
+                    <h3>Due Today</h3>
+                    <hr class="custom-hr">
+                    <div></div>
+                </div>
+            
+                <div class="task-column">
+                    <h3>Due this week</h3>
+                    <hr class="custom-hr">
+                    <div></div>
+                </div>
+            
+                <div class="task-column">
+                    <h3>Due someday</h3>
+                    <hr class="custom-hr">
+                    <div></div>
+                </div>
+            </section>
     </body>
+    <script type="module" src="../js/tasks.js"></script>
 </html>

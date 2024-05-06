@@ -92,7 +92,7 @@ button:hover {
     width: 200px;
 }
 
-#center {
+.center {
     max-width: fit-content;
     margin-inline: auto;
 }

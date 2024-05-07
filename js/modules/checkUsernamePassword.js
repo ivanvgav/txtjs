@@ -10,6 +10,9 @@ export function checkUserAndPassword(username, password) {
     if (!checkUser || checkUser.password != encryptPassword(password)) {
         alert("Your credencials are incorrect. If you do not have an account, please create a new one");
     } else {
+        // Aqui hacer lo del login Mail
+        // setLoginUserEmail(checkUser.email)
         window.location.href = "../pages/txtjs.html";
+        
     }
 }

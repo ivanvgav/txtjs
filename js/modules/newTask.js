@@ -1,24 +1,28 @@
-import { getUsers, setUsers } from "./saveToLocalStorage.js"
+import { getLogInUserEmail } from "./saveToLocalStorage.js";
 
 export const newTaskElement = document.getElementById('modalContainer');
 
-export function saveNewTaskToLocalStorage(task, description, date) {
-   let users = getUsers();
-   users.push(task);
-   users.push(description);
-   users.push(date);
-   setUsers(users);
+const newTaskValue = document.getElementById('new-task').value
+const newDescriptionValue = document.getElementById('descrip-task').value
+const newDateValue = document.getElementById('date').value
+
+export const newTask = {
+   task: newTaskValue,
+   description: newDescriptionValue,
+   date: newDateValue
+}
+//function getTaskByUserEmail()
+
+export function addNewTaskToLocalStorage(task) {
+   userEmail = getLogInUserEmail()
+
 }
 
 export const submitTask = () => newTaskElement.addEventListener('submit', (e) => {
    try {
       e.preventDefault();
       
-      const newTaskValue = document.getElementById('new-task').value
-      const newDescriptionValue = document.getElementById('descrip-task').value
-      const newDateValue = document.getElementById('date').value
-      
-      saveNewTaskToLocalStorage(newTaskValue, newDescriptionValue, newDateValue)
+      addNewTaskToLocalStorage(newTask)
    } catch (error) {
       console.log(error)
    }

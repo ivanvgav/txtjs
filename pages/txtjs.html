@@ -7,7 +7,6 @@
         <link href="../styles/stylesTodo.css" rel="stylesheet">
     </head>
     <body>
-        <!-- <h1>Access granted!</h1> -->
         <header>
             <div class="info-container">
                 <h2>Welcome to todo-txt.js ✍🏻</h2>
@@ -21,6 +20,12 @@
                 <div class="container">
                     <label for="new-task">New Task</label>
                     <input type="text" placeholder="Enter Task" name="new-task" id="new-task" required>
+
+                    <label for="description-task">Description</label>
+                    <input type="text" placeholder="Description" name="descrip-task" id="descrip-task" required>
+
+                    <label for="date">Due Date:</label>
+                    <input type="date" id="date" name="due-date" placeholder="dd-mm-yyyy" value="">
                 </div>
 
                     <button class="button" type="submit">Submit</button>

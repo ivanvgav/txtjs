@@ -13,7 +13,7 @@ export function setUsers(users) {
 }
 
 export function setLogInUserEmail(email) {
-    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userEmail', JSON.stringify(email));
 }
 
 export function getLogInUserEmail() {

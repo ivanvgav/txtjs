@@ -3,12 +3,6 @@ import { saveToLocalStorage } from "./saveToLocalStorage.js";
 
 export const form = document.getElementById('form')
 
-export let user = {
-    email: "",
-    username: "",
-    password: "",
-}
-
 export const submitFormButton = () => form.addEventListener('submit', (e) => {
     try {
         e.preventDefault();
@@ -18,14 +12,12 @@ export const submitFormButton = () => form.addEventListener('submit', (e) => {
         const password = document.getElementById('password').value;
         alert(`User create successfully. The date is Username: ${username}, Email: ${email} and Password: ${password}`);
 
-        user.email = email;
-        user.username = username;
-        user.password = encryptPassword(password);
-        // let user = {
-        //     email: email,
-        //     username: username,
-        //     password: encryptPassword(password),
-        // }
+        let user = {
+            email: email,
+            username: username,
+            password: encryptPassword(password),
+            tasks: [],
+        }
 
         saveToLocalStorage(user)
 

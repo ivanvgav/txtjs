@@ -16,7 +16,7 @@
         <button class="button" onclick="appearById('modalContainer')">Add new task</button>
         <!--Modal new task form-->
         <div id="modalContainer" class="hide">
-            <form class="modal-content animate" action="" method="post" id="form">
+            <form class="modal-content animate" action="" method="submit" id="form">
                 <div class="container">
                     <label for="new-task">New Task</label>
                     <input type="text" placeholder="Enter Task" name="new-task" id="new-task" required>
@@ -28,7 +28,7 @@
                     <input type="date" id="date" name="due-date" placeholder="dd-mm-yyyy" value="">
                 </div>
 
-                    <button class="button" type="submit">Submit</button>
+                    <button class="button" type="button" onclick="submitTask()">Submit</button>
                     <button type="button" class="button" onclick="hideById('modalContainer')" >Cancel</button>
             </form>
         </div>

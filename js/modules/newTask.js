@@ -1,7 +1,5 @@
 import { getLogInUserEmail, getUserByEmail } from "./saveToLocalStorage.js";
 
-export const newTaskElement = document.getElementById('modalContainer');
-
 const newTaskValue = document.getElementById('new-task').value
 const newDescriptionValue = document.getElementById('descrip-task').value
 const newDateValue = document.getElementById('date').value
@@ -18,10 +16,13 @@ export function addNewTaskToLocalStorage() {
       description: newDescriptionValue,
       date: newDateValue,
       status: "TODO",
-      id: CryptoJS.SHA1(Math.random().toString()),
+      id: "1",
+      // id: CryptoJS.SHA1(Math.random().toString()),
    }
-   user.push(task)
+   console.log(user)
+   user.tasks.push(task)
    // guardar de nuevo el usuario en el localStorage
+   
    // actualizar el DOM con la tarea agregada
 }
 
@@ -35,12 +36,15 @@ export function deleteTaskForUser() {
 // guardar de nuevo el usuario en el localStorage
 }
 
-export const submitTask = () => newTaskElement.addEventListener('submit', (e) => {
+// export function editTaskForUser() {
+//    let user = getTaskByUserEmail()
+// }
+
+export const submitTask = () => {
    try {
-      e.preventDefault();
-      
+      console.log("submitTask")      
       addNewTaskToLocalStorage()
    } catch (error) {
       console.log(error)
    }
-})
+}

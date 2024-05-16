@@ -16,10 +16,8 @@ export function addNewTaskToLocalStorage() {
       description: newDescriptionValue,
       date: newDateValue,
       status: "TODO",
-      id: "1",
-      // id: CryptoJS.SHA1(Math.random().toString()),
+      id: CryptoJS.SHA1(Math.random().toString()),
    }
-   console.log(user)
    user.tasks.push(task)
    // guardar de nuevo el usuario en el localStorage
    

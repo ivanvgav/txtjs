@@ -1,4 +1,4 @@
-import { getLogInUserEmail } from "./saveToLocalStorage.js";
+import { getLogInUserEmail, getUserByEmail } from "./saveToLocalStorage.js";
 
 export const newTaskElement = document.getElementById('modalContainer');
 
@@ -6,39 +6,40 @@ const newTaskValue = document.getElementById('new-task').value
 const newDescriptionValue = document.getElementById('descrip-task').value
 const newDateValue = document.getElementById('date').value
 
-export const task = {
-   task: "",
-   description: "",
-   date: "",
-   status: "TODO",
-   id: CryptoJS.SHA1(Math.random().toString()),
+export function getTaskByUserEmail() {
+   let user = getUserByEmail(getLogInUserEmail())
+   return user.tasks
 }
 
-export let tasks = [];
-
-// export function getTaskByUserEmail(email) {
-//    getLogInUserEmail(email);
-//
-// }
-
-export function addNewTaskToLocalStorage(task) {
-   // const userEmail = getLogInUserEmail()
-   task.task = newTaskValue;
-   task.description = newDescriptionValue;
-   task.date = newDateValue;
-   tasks.push(task)
+export function addNewTaskToLocalStorage() {
+   let user = getUserByEmail(getLogInUserEmail());
+   const task = {
+      task: newTaskValue,
+      description: newDescriptionValue,
+      date: newDateValue,
+      status: "TODO",
+      id: CryptoJS.SHA1(Math.random().toString()),
+   }
+   user.push(task)
+   // guardar de nuevo el usuario en el localStorage
+   // actualizar el DOM con la tarea agregada
 }
 
-// export function deleteTaskForUser(id) {
-//    getTaskByUserEmail(email);
-//    
-// }
+export function deleteTaskForUser() {
+   let user = getTaskByUserEmail();
+// buscar la tarea por id
+   let taskById = user.find(task => {
+     return task.id == id 
+   })
+//    borrarla
+// guardar de nuevo el usuario en el localStorage
+}
 
 export const submitTask = () => newTaskElement.addEventListener('submit', (e) => {
    try {
       e.preventDefault();
       
-      // addNewTaskToLocalStorage(task)
+      addNewTaskToLocalStorage()
    } catch (error) {
       console.log(error)
    }

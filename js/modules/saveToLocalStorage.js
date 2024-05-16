@@ -19,3 +19,10 @@ export function setLogInUserEmail(email) {
 export function getLogInUserEmail() {
     return JSON.parse(localStorage.getItem('userEmail')) ? JSON.parse(localStorage.getItem('userEmail')) : undefined;
 }
+
+export function getUserByEmail(email) {
+    let users = getUsers();
+    return users.find( (user) => {
+        return user.email == email
+    })
+}

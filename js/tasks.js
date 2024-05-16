@@ -6,3 +6,5 @@ window.appearById = function(id) {
 window.hideById = function(id) {
     hideById(id)
 }
+
+// Getter y setter para mostrar tareas actualizadas

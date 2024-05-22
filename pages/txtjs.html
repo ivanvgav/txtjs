@@ -29,6 +29,7 @@
                 </div>
 
                     <button class="button" type="button" onclick="submitTask()">Submit</button>
+                    <button class="button" type="button" onclick="deleteTask()">Delete</button>
                     <button type="button" class="button" onclick="hideById('modalContainer')" >Cancel</button>
             </form>
         </div>
@@ -38,25 +39,25 @@
                 <div class="task-column">
                     <h3>No due date</h3>
                     <hr class="custom-hr">
-                    <div></div>
+                    <div id="no-due-date"></div>
                 </div>
             
                 <div class="task-column">
                     <h3>Due Today</h3>
                     <hr class="custom-hr">
-                    <div></div>
+                    <div id="today-date"></div>
                 </div>
             
                 <div class="task-column">
                     <h3>Due this week</h3>
                     <hr class="custom-hr">
-                    <div></div>
+                    <div id="this-week-date"></div>
                 </div>
             
                 <div class="task-column">
                     <h3>Due someday</h3>
                     <hr class="custom-hr">
-                    <div></div>
+                    <div id="someday-date"></div>
                 </div>
             </section>
     </body>

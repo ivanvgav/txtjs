@@ -7,15 +7,13 @@ export function saveToLocalStorage(user) {
 //crear función para actualizar usuario
 export function updateUser(user) {
     let users = getUsers();
-    users.map(user => {
-        if (user.id == id) {
-           return {...user}
-        } else {
-            return user
-        }
-    })
+    let foundIndexUser = users.findIndex(userToFind => user.id == userToFind.id)
+    if (foundIndexUser > -1) {
+        users[foundIndexUser] = {...user}
+    }
+    setUsers(users)
 }
-
+// TODO: Ver como hacer la variable global de user
 export function getUsers() {
     return JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : [];
 }

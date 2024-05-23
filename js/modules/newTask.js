@@ -13,8 +13,7 @@ export function addNewTaskToLocalStorage() {
     let user = getUserByEmail(getLogInUserEmail());
 
     const newTaskValue = document.getElementById("new-task").value;
-    const newDescriptionValue =
-        document.getElementById("descrip-task").value;
+    const newDescriptionValue = document.getElementById("descrip-task").value;
     const newDateValue = document.getElementById("date").value;
 
     const task = {
@@ -26,38 +25,44 @@ export function addNewTaskToLocalStorage() {
     };
     user.tasks.push(task);
     updateUser(user);
-    filterTasks();
 }
 
-export function filterTasks() {
-    const userTasks = getTaskByUserEmail(getLogInUserEmail());
+export function filterTasks(tasksArray) {
+    // const tasksArray = getTaskByUserEmail(getLogInUserEmail());
     let todayDate = new Date().toISOString().split("T")[0];
     let weekDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
-    const tasksDueToday = userTasks.filter(task => task.date === todayDate)
+    const tasksDueToday = tasksArray.filter(task => task.date === todayDate)
     console.log("today", tasksDueToday)
-    const tasksDueThisWeek = userTasks.filter(task => task.date <= weekDate && task.date >= todayDate)
+    const tasksDueThisWeek = tasksArray.filter(task => task.date <= weekDate && task.date >= todayDate)
     console.log("week", tasksDueThisWeek)
-    const tasksDueNoDate = userTasks.filter(task => task.date === '')
+    const tasksDueNoDate = tasksArray.filter(task => task.date === '')
     console.log("no-date", tasksDueNoDate)
-    const tasksDueSomeday = userTasks.filter(task => task.date > weekDate)
+    const tasksDueSomeday = tasksArray.filter(task => task.date > weekDate)
     console.log("someday day", tasksDueSomeday)
+
+    return {
+        today: tasksDueToday,
+        week: tasksDueThisWeek,
+        noDate: tasksDueNoDate,
+        someDay: tasksDueSomeday,
+     }
 }
 
-export function showTasks(tasks) {
+export function showTasks(tasks, id) {
     // TODO: make date matches each column
     for (let i = 0; i < tasks.length; i++) {
-        document.getElementById("today-date").innerHTML += '<div>' + tasks[i].task + '</div>';
+        document.getElementById(id).innerHTML += '<div>' + tasks[i].task + '</div>';
     }
-    for (let i = 0; i < tasks.length; i++) {
-        document.getElementById("this-week-date").innerHTML = '<div>' + tasks[i].task + '</div>';
-    }
-    for (let i = 0; i < tasks.length; i++) {
-        document.getElementById("no-due-date").innerHTML += '<div>' + tasks[i].task + '</div>';
-    }
-    for (let i = 0; i < tasks.length; i++) {
-        document.getElementById("someday-date").innerHTML += '<div>' + tasks[i].task + '</div>';
-    }
+    // for (let i = 0; i < tasks.length; i++) {
+    //     document.getElementById("this-week-date").innerHTML = '<div>' + tasks[i].task + '</div>';
+    // }
+    // for (let i = 0; i < tasks.length; i++) {
+    //     document.getElementById("no-due-date").innerHTML += '<div>' + tasks[i].task + '</div>';
+    // }
+    // for (let i = 0; i < tasks.length; i++) {
+    //     document.getElementById("someday-date").innerHTML += '<div>' + tasks[i].task + '</div>';
+    // }
 }
 
 export function deleteTaskForUser() {
@@ -79,9 +84,7 @@ export function deleteTaskForUser() {
 
 export const submitTask = () => {
     try {
-        console.log("submitTask");
         addNewTaskToLocalStorage();
-        filterTasks;
     } catch (error) {
         console.log(error);
     }

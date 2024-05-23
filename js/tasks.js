@@ -1,5 +1,5 @@
 import { appearById, hideById } from "./modules/login.js" 
-import { deleteTaskForUser, showTasks, submitTask } from "./modules/newTask.js"
+import { deleteTaskForUser, filterTasks, getTaskByUserEmail, showTasks, submitTask } from "./modules/newTask.js"
 import { getLogInUserEmail, getUserByEmail } from "./modules/saveToLocalStorage.js"
 
 window.appearById = function(id) {
@@ -11,16 +11,18 @@ window.hideById = function(id) {
 
 window.submitTask = function() {
     submitTask()
-    console.log("submitTask");
 }
 
 window.deleteTask = function() {
     deleteTaskForUser()
-    console.log("deleteTask")
 }
 
-window.onload = function() {
-    showTasks()
+window.showTasks = function() {
+    showTasks(tasks, id)
 }
-console.log(getUserByEmail(getLogInUserEmail()))
+
+window.filterTasks = function() {
+    filterTasks(getTaskByUserEmail(getLogInUserEmail()))
+}
+
 // Getter y setter para mostrar tareas actualizadas

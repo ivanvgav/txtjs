@@ -26,36 +26,37 @@ export function addNewTaskToLocalStorage() {
     };
     user.tasks.push(task);
     updateUser(user);
-    showTasks();
+    filterTasks();
 }
 
-export function showTasks() {
+export function filterTasks() {
     const userTasks = getTaskByUserEmail(getLogInUserEmail());
     let todayDate = new Date().toISOString().split("T")[0];
     let weekDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
     const tasksDueToday = userTasks.filter(task => task.date === todayDate)
     console.log("today", tasksDueToday)
-    console.log("today task title", tasksDueToday[0].task)
-    const tasksDueThisWeek = userTasks.filter(task => task.date <= weekDate && task.date != '' && task.date != todayDate)
+    const tasksDueThisWeek = userTasks.filter(task => task.date <= weekDate && task.date >= todayDate)
     console.log("week", tasksDueThisWeek)
     const tasksDueNoDate = userTasks.filter(task => task.date === '')
     console.log("no-date", tasksDueNoDate)
     const tasksDueSomeday = userTasks.filter(task => task.date > weekDate)
     console.log("someday day", tasksDueSomeday)
+}
 
+export function showTasks(tasks) {
     // TODO: make date matches each column
-    for (let i = 0; i < tasksDueToday.length; i++) {
-        document.getElementById("today-date").innerHTML += '<div>' + tasksDueToday[i].task + '</div>';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById("today-date").innerHTML += '<div>' + tasks[i].task + '</div>';
     }
-    for (let i = 0; i < tasksDueThisWeek.length; i++) {
-        document.getElementById("this-week-date").innerHTML += '<div>' + tasksDueThisWeek[i].task + '</div>';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById("this-week-date").innerHTML = '<div>' + tasks[i].task + '</div>';
     }
-    for (let i = 0; i < tasksDueNoDate.length; i++) {
-        document.getElementById("no-due-date").innerHTML += '<div>' + tasksDueNoDate[i].task + '</div>';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById("no-due-date").innerHTML += '<div>' + tasks[i].task + '</div>';
     }
-    for (let i = 0; i < tasksDueSomeday.length; i++) {
-        document.getElementById("someday-date").innerHTML += '<div>' + tasksDueSomeday[i].task + '</div>';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById("someday-date").innerHTML += '<div>' + tasks[i].task + '</div>';
     }
 }
 
@@ -80,7 +81,7 @@ export const submitTask = () => {
     try {
         console.log("submitTask");
         addNewTaskToLocalStorage();
-        showTasks;
+        filterTasks;
     } catch (error) {
         console.log(error);
     }

@@ -13,6 +13,11 @@ export function updateUser(user) {
     }
     setUsers(users)
 }
+
+export function updateTasksInLocalStorage(taskArray) {
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
+}
+
 // TODO: Ver como hacer la variable global de user
 export function getUsers() {
     return JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : [];

@@ -34,7 +34,7 @@ export function filterTasks(tasksArray) {
 
     const tasksDueToday = tasksArray.filter(task => task.date === todayDate)
     console.log("today", tasksDueToday)
-    const tasksDueThisWeek = tasksArray.filter(task => task.date <= weekDate && task.date >= todayDate)
+    const tasksDueThisWeek = tasksArray.filter(task => task.date <= weekDate && task.date > todayDate)
     console.log("week", tasksDueThisWeek)
     const tasksDueNoDate = tasksArray.filter(task => task.date === '')
     console.log("no-date", tasksDueNoDate)
@@ -50,32 +50,25 @@ export function filterTasks(tasksArray) {
 }
 
 export function showTasks(tasks, id) {
-    // TODO: make date matches each column
     for (let i = 0; i < tasks.length; i++) {
-        document.getElementById(id).innerHTML += '<div>' + tasks[i].task + '</div>';
+        document.getElementById(id).innerHTML += '<div>' + tasks[i].task + `<button onclick="deleteTaskForUser('${tasks[i].id}')">x</button>` + '</div>';
     }
-    // for (let i = 0; i < tasks.length; i++) {
-    //     document.getElementById("this-week-date").innerHTML = '<div>' + tasks[i].task + '</div>';
-    // }
-    // for (let i = 0; i < tasks.length; i++) {
-    //     document.getElementById("no-due-date").innerHTML += '<div>' + tasks[i].task + '</div>';
-    // }
-    // for (let i = 0; i < tasks.length; i++) {
-    //     document.getElementById("someday-date").innerHTML += '<div>' + tasks[i].task + '</div>';
-    // }
 }
 
-export function deleteTaskForUser() {
-    const user = getTaskByUserEmail(getLogInUserEmail());
-    console.log("Tasks", user);
-    const taskById = user.find((task) => {
-        return task.id == user.id;
-    });
-    const taskErased = user.filter((task) => {
-        return task.id != taskById;
-    });
-    user.tasks.push(taskErased);
-    updateUser(user);
+export function deleteTaskForUser(taskId) {
+    const tasksByUser = getTaskByUserEmail(getLogInUserEmail());
+    const taskIndex = tasksByUser.findIndex(task => task.id === taskId);
+
+    if (taskIndex !== -1) {
+        tasksByUser.splice(taskIndex, 1);
+
+        updateTasksInLocalStorage(tasksByUser)
+
+        filterTasks(tasksByUser)
+        //TODO: make show tasks again
+    } else {
+        console.log("Task not found");
+    }
 }
 
 // export function editTaskForUser() {
@@ -85,6 +78,17 @@ export function deleteTaskForUser() {
 export const submitTask = () => {
     try {
         addNewTaskToLocalStorage();
+
+        document.getElementById("today-date").innerHTML = "";
+        document.getElementById("this-week-date").innerHTML = "";
+        document.getElementById("no-due-date").innerHTML = "";
+        document.getElementById("someday-date").innerHTML = "";
+
+        let tasksFiltered = filterTasks(getTaskByUserEmail(getLogInUserEmail()))
+        showTasks(tasksFiltered.noDate, 'no-due-date')
+        showTasks(tasksFiltered.today, 'today-date')
+        showTasks(tasksFiltered.week, 'this-week-date')
+        showTasks(tasksFiltered.someDay, 'someday-date')
     } catch (error) {
         console.log(error);
     }
@@ -93,7 +97,7 @@ export const submitTask = () => {
 export const deleteTask = () => {
     try {
         console.log("deleteTask");
-        deleteTaskForUser();
+        deleteTaskForUser(taskId);
     } catch (error) {
         console.log(error);
     }

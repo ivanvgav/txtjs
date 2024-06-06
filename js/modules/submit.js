@@ -16,6 +16,7 @@ export const submitFormButton = () => form.addEventListener('submit', (e) => {
             email: email,
             username: username,
             password: encryptPassword(password),
+            tasks: [],
         }
 
         saveToLocalStorage(user)

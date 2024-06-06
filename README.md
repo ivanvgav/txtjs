@@ -6,15 +6,15 @@ Application to use todo.txt with a twist of a kanban board.
 
 ### Planilla Auth
 * [X] Armar planilla Auth
-    * [ ] CSS
-* [ ] Auth Js
-* [ ] Creación de usuarios
-* [ ] Almacenamiento de contraseñas
+    * [X] CSS
+* [X] Auth Js
+* [X] Creación de usuarios
+* [X] Almacenamiento de contraseñas
 
 ### Kanban
-* [ ] Plantilla html
-    * [ ] CSS
-        * [ ] Columnas
+* [x] Plantilla html
+    * [x] CSS
+        * [x] Columnas
         * [ ] Botones
     * [ ] Js
 * [ ] Movimiento entre columnas
@@ -37,4 +37,8 @@ Application to use todo.txt with a twist of a kanban board.
 * [ ] Botones
     * [ ] Contexto
     * [ ] Proyecto
-    * [ ] Due Dates
+    * [x] Due Dates
+
+## Bloqueos del TODO
+
+No entiendo como es posible tener el tema del id para poder hacer 
